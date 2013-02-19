@@ -1,0 +1,10 @@
+{
+    "mongodb":{
+        "options":{
+            "native_parser":false
+        }
+    },
+    "daemon":{
+        "enable":false
+    }
+}

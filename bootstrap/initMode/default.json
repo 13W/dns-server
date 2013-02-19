@@ -1,0 +1,22 @@
+{
+    "mongodb":{
+        "connect":"mongodb://127.0.0.1:27017/dnsserver?auto_reconnect=true",
+        "options":{
+            "database":"dns.server",
+            "username":"web",
+            "password":"opennet",
+            "safe":true,
+            "native_parser":true,
+            "serializeFunctions":true
+        }
+    },
+    "dns": {
+    },
+    "daemon":{
+        "enable":false,
+        "pid":"./.pid",
+        "error_log":"./logs/error.log",
+        "main_log":"./logs/main.log",
+        "uid":65534
+    }
+}

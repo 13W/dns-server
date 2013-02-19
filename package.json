@@ -1,0 +1,29 @@
+{
+    "name": "DNSServer",
+    "version": "0.0.0",
+    "description": "NodeJS DNS Server",
+    "main": "./bootstrap",
+    "maintainer": {
+        "name": "Bulyga Vladimir",
+        "email": "zero@cetku.net",
+        "web": "http://cetku.net"
+    },
+    "repositories": [{
+        "type": "git",
+        "url": "https://git.cetku.net/dns-server.git"
+    }],
+    "dependencies": {
+        "native-dns": "*",
+        "daemon": "*",
+        "lo": "*",
+        "mmdb": "*",
+        "smart-cache": "*",
+        "memcached": "*",
+        "async": "*",
+        "cli-color": "*",
+        "optimist": "*"
+    },
+    "engines" :       {
+        "node" : ">=0.8"
+    }
+}
