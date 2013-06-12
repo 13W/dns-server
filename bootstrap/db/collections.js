@@ -1,6 +1,6 @@
 var project = require('project');
 
-var collections = project.collections = {
+project.collections = {
     'dns.soa':{
         type:'object',
         properties:{
@@ -18,21 +18,15 @@ var collections = project.collections = {
             minimum:{type:'number', default:3600}
         }
     },
-    'dns.classes':{
+    'dns.records':{
         type:'object',
         properties:{
             _id:{type:'objectid'},
             key:{type:'string'},
-            type:{type:'string', enum:['A', 'AAAA', 'MX', 'TXT', 'SRV', 'NS', 'CNAME', 'PTR']},
+            type:{type:'number'},
+            class: {type: 'number', default: 1},
             properties:{
-                type:'array',
-                items:{
-                    type:'object',
-                    properties:{
-                        key:{type:'string'},
-                        value:{type:'string'}
-                    }
-                }
+                type:'object'
             }
         }
     }

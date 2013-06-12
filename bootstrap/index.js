@@ -262,3 +262,6 @@ process.exit = function() {
     _exit.apply(this, arguments);
 };
 
+process.on('SIGKILL', function() {
+    console.warn(arguments);
+})

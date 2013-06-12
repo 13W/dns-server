@@ -8,7 +8,7 @@ function init(callback) {
     for(var name in project.collections) {
         var model = project.collections[name];
         db.bind(name);
-        db.Schema.append(name, model);
+        db.appendModel(name, model);
     }
     callback();
 }

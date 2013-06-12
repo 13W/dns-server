@@ -1,0 +1,100 @@
+[
+    {
+        "name": "ip.cetku.net",
+        "class": 1,
+        "type": "A",
+        "properties": {
+            "address": "127.0.0.1",
+            "ttl": 600
+        }
+
+    },
+    {
+        "name": "atom.ip.cetku.net",
+        "class": 1,
+        "type": "NS",
+        "properties": {
+            "data": "ns1.cetku.net",
+            "ttl": 600
+        }
+
+    },
+    {
+        "name": "atom.ip.cetku.net",
+        "class": 1,
+        "type": "NS",
+        "properties": {
+            "data": "ns2.cetku.net",
+            "ttl": 600
+        }
+
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "properties": {
+            "ttl": 300,
+            "priority": 20,
+            "exchange": "ALT2.ASPMX.L.GOOGLE.COM"
+        }
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "properties": {
+            "ttl": 300,
+            "priority": 30,
+            "exchange": "ASPMX2.GOOGLEMAIL.COM"
+        }
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "properties": {
+            "ttl": 300,
+            "priority": 30,
+            "exchange": "ASPMX3.GOOGLEMAIL.COM"
+        }
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "properties": {
+            "ttl": 300,
+            "priority": 30,
+            "exchange": "ASPMX4.GOOGLEMAIL.COM"
+        }
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "properties": {
+            "ttl": 300,
+            "priority": 30,
+            "exchange": "ASPMX5.GOOGLEMAIL.COM"
+        }
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "properties": {
+            "ttl": 300,
+            "priority": 30,
+            "exchange": "ASPMX.L.GOOGLE.COM"
+        }
+    },
+    {
+        "name": "cetku.net",
+         "type": "MX",
+        "class": 1,
+        "ttl": 300,
+        "priority": 20,
+        "exchange": "ALT1.ASPMX.L.GOOGLE.COM"
+    }
+]
