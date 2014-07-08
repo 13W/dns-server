@@ -5,25 +5,26 @@
     "main": "./bootstrap",
     "maintainer": {
         "name": "Bulyga Vladimir",
-        "email": "zero@cetku.net",
-        "web": "http://cetku.net"
+        "email": "xx@ccxx.cc",
+        "web": "http://ccxx.cc"
     },
     "repositories": [{
         "type": "git",
-        "url": "https://git.cetku.net/dns-server.git"
+        "url": "https://git.ccxx.cc/dns-server.git"
     }],
     "dependencies": {
+        "sl": "*",
+        "easy-config": "*",
         "native-dns": "*",
         "daemon": "*",
-        "lo": "*",
+        "bunyan": "*",
         "mmdb": "*",
-        "smart-cache": "*",
-        "memcached": "*",
+        "lru-cache": "*",
         "async": "*",
         "cli-color": "*",
         "optimist": "*"
     },
     "engines" :       {
-        "node" : ">=0.8"
+        "node" : ">=0.10"
     }
 }

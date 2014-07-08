@@ -1,6 +1,6 @@
 [
     {
-        "name": "ip.cetku.net",
+        "name": "ip.ccxx.cc",
         "class": 1,
         "type": "A",
         "properties": {
@@ -10,27 +10,27 @@
 
     },
     {
-        "name": "atom.ip.cetku.net",
+        "name": "atom.ip.ccxx.cc",
         "class": 1,
         "type": "NS",
         "properties": {
-            "data": "ns1.cetku.net",
+            "data": "ns1.ccxx.cc",
             "ttl": 600
         }
 
     },
     {
-        "name": "atom.ip.cetku.net",
+        "name": "atom.ip.ccxx.cc",
         "class": 1,
         "type": "NS",
         "properties": {
-            "data": "ns2.cetku.net",
+            "data": "ns2.ccxx.cc",
             "ttl": 600
         }
 
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "properties": {
@@ -40,7 +40,7 @@
         }
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "properties": {
@@ -50,7 +50,7 @@
         }
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "properties": {
@@ -60,7 +60,7 @@
         }
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "properties": {
@@ -70,7 +70,7 @@
         }
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "properties": {
@@ -80,7 +80,7 @@
         }
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "properties": {
@@ -90,7 +90,7 @@
         }
     },
     {
-        "name": "cetku.net",
+        "name": "ccxx.cc",
          "type": "MX",
         "class": 1,
         "ttl": 300,

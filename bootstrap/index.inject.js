@@ -1,4 +1,11 @@
 'use strict';
+
+exports.init = function exec(config, logger, dns) {
+    logger.info('Loaded!');
+    dns.listen(config.port, config.host);
+};
+
+/*
 require( 'lo' );
 var fs = require( 'fs' ),
     cli = require( 'cli-color' ),
@@ -265,3 +272,4 @@ process.exit = function() {
 process.on('SIGKILL', function() {
     console.warn(arguments);
 })
+*/
