@@ -72,11 +72,11 @@ var data = [
 var async = require('async');
 var consts = require('native-dns/node_modules/native-dns-packet/consts.js');
 
-exports.db = function inject(config, logger) {
+exports.db = function async(config, logger, done) {
 
     function DB () {
         this.db = null;
-        this.data = [], data;
+        this.data = []; //data;
         this.assets = {};
         this.loadAssets();
         logger.info({assets: this.assets}, 'Assets loaded');
@@ -98,15 +98,16 @@ exports.db = function inject(config, logger) {
             ptr = ptr[dn];
         }
         if (ptr && ptr.__records) {
-            result = (ptr.__records || []).filter(function (record) {
-                return record.type === query.type && record.class === record.class;
-            })
+            result = (ptr.__records || [])
+                .filter(function (record) {
+                    return record.type === query.type && record.class === record.class;
+                })
                 .map(function (record) {
                     record.name = query.name;
                     return record;
                 });
         }
-        logger.info({result: result, ptr: ptr}, 'Find result');
+        logger.debug({result: result, ptr: ptr}, 'Local result');
         callback(null, result);
     };
 
@@ -124,5 +125,5 @@ exports.db = function inject(config, logger) {
             record.class = consts.NAME_TO_QCLASS[record.class] || record.class;
         });
     };
-    return new DB();
+    done(null, new DB());
 };

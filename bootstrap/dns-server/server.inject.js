@@ -21,16 +21,17 @@ exports.dns = function inject(logger, config, db) {
         var self = this,
             response = null;
         self.lookupInternal(question, function (error, answer) {
-            console.log(error, answer);
             if (!error && answer) {
-                callback(null, answer);
+                callback(null, {answer: answer, additional: [], authority: []});
                 return;
             }
-            async.some(self.forwarders, function (server, callback) {
-                logger.info({server: server}, 'Lookup');
-                var options = {
+            async.detect(self.forwarders, function (server, callback) {
+                var parsed = server.split(':'),
+                    host = parsed[0],
+                    port = parseInt(parsed[1], 10) || 53,
+                    options = {
                         question: question,
-                        server: { address: server, port: 53},
+                        server: { address: host, port: port},
                         timeout: 1000
                     },
                     request = dns.Request(options);
@@ -39,42 +40,39 @@ exports.dns = function inject(logger, config, db) {
                     callback(false);
                 });
                 request.on('message', function(error, res) {
-                    response = !error && res;
+                    if (!error && res) {
+                        response = res;
+                    }
                     callback(response);
                 });
                 request.on('error', function(error) {
                     logger.error({error: error, server: server}, 'DNS Lookup error');
-                    callback(error);
+                    callback(false);
                 });
                 request.send();
             }, function (ok) {
-                var error = !ok && dns.NOTFOUND;
-                callback(error, ok && response && response.answer);
+                var error = !ok && dns.consts.NAME_TO_RCODE.NOTFOUND;
+                callback(error || 0, ok && response);
             });
         });
     };
-/*
- /spool/Projects/Infinity/dns-server/node_modules/native-dns/node_modules/native-dns-packet/packet.js:470
- throw e;
- ^
- AssertionError: Resource must be defined
- at writeResource (/spool/Projects/Infinity/dns-server/node_modules/native-dns/node_modules/native-dns-packet/packet.js:233:3)
- at Function.Packet.write (/spool/Projects/Infinity/dns-server/node_modules/native-dns/node_modules/native-dns-packet/packet.js:425:19)
- at Packet.send (/spool/Projects/Infinity/dns-server/node_modules/native-dns/lib/packet.js:43:16)
- at /spool/Projects/Infinity/dns-server/bootstrap/dns-server/server.inject.js:62:22
- at /spool/Projects/Infinity/dns-server/bootstrap/dns-server/server.inject.js:52:17
- at /spool/Projects/Infinity/dns-server/node_modules/async/lib/async.js:371:13
- at done (/spool/Projects/Infinity/dns-server/node_modules/async/lib/async.js:135:19)
- at /spool/Projects/Infinity/dns-server/node_modules/async/lib/async.js:32:16
- at /spool/Projects/Infinity/dns-server/node_modules/async/lib/async.js:368:17
- at null.<anonymous> (/spool/Projects/Infinity/dns-server/bootstrap/dns-server/server.inject.js:39:21)
 
- */
     DNSServer.prototype.request = function (request, response) {
-        logger.info({question: request.question}, 'new request');
-        this.lookup(request.question[0], function (error, answer) {
-            logger.info({error: error, response: answer}, 'lookup.response');
-            response.answer = answer;
+        logger.debug({question: request.question}, 'new request');
+        this.lookup(request.question[0], function (error, lookupResponse) {
+            logger.debug({error: dns.consts.RCODE_TO_NAME[error], response: lookupResponse}, 'lookup.response');
+            if (error) {
+                response.header.rcode = error;
+            }
+            
+            if (lookupResponse && lookupResponse.answer.length) {
+                response.answer = lookupResponse.answer;
+                response.authority = lookupResponse.authority || [];
+                response.additional = lookupResponse.additional || [];
+
+            }
+
+            logger.debug({response: response}, 'Response');
             response.send();
         });
     };
